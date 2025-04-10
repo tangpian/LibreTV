@@ -1,16 +1,16 @@
 // 全局常量配置
-const PROXY_URL = 'https://proxy.mengze.vip/proxy/';
+const PROXY_URL = 'https://proxy.omnibox.app/';
 const HOPLAYER_URL = 'https://hoplayer.com/index.html';
 const SEARCH_HISTORY_KEY = 'videoSearchHistory';
 const MAX_HISTORY_ITEMS = 5;
 
 // 网站信息配置
 const SITE_CONFIG = {
-    name: 'LibreTV',
-    url: 'https://libretv.is-an.org',
-    description: '免费在线视频搜索与观看平台',
-    logo: 'https://images.icon-icons.com/38/PNG/512/retrotv_5520.png',
-    version: '1.0.0'
+    name: 'Tangpian',
+    url: 'https://tangpian.com',
+    description: '糖片视频，给生活加点甜',
+    logo: 'img/logo.svg',
+    version: '1.0.3'
 };
 
 // API站点配置

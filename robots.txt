@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /js/
 Disallow: /css/
+Disallow: /img/
 
-Sitemap: https://libretv.is-an.org/sitemap.xml
+Sitemap: https://tangpian.com/sitemap.xml
