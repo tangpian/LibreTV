@@ -35,9 +35,9 @@
 </head>
 <body class="page-bg text-white">
     <div class="fixed top-4 right-4 z-50 flex items-center space-x-4">
-        <button onclick="toggleSettings(event)" class="bg-[#222] hover:bg-[#333] border border-[#333] hover:border-white rounded-lg px-4 py-2 transition-colors" aria-label="打开设置">
+        <button onclick="toggleSettings(event)" class="bg-white hover:bg-[#f8f9fa] border border-[#ff69b4] hover:border-[#ff8ebf] rounded-lg px-4 py-2 transition-colors" aria-label="打开设置">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37.996.608 2.296.07 2.572-1.065z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
         </button>
@@ -52,7 +52,7 @@
         <div class="space-y-4">
             <div>
                 <label class="block text-sm font-medium text-gray-400 mb-2">选择采集站点</label>
-                <select id="apiSource" class="w-full bg-[#222] border border-[#333] text-white px-3 py-2 rounded-lg focus:outline-none focus:border-white transition-colors">
+                <select id="apiSource" class="w-full bg-[#ff69b4] border border-[#333] text-white px-3 py-2 rounded-lg focus:outline-none focus:border-white transition-colors">
                     <option value="aggregated">聚合搜索 (所有源)</option>
                     <option value="heimuer" selected>黑木耳影视 (heimuer)</option>
                     <option value="ffzy">非凡影视 (ffzy)</option>
@@ -93,12 +93,10 @@
             <!-- 网站标志和口号 -->
             <header class="text-center mb-2">
                 <div class="flex justify-center items-center mb-4">
-                    <svg class="w-10 h-10 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
+                    <img src="img/logo.png" alt="Tangpian Logo" class="w-10 h-10 mr-2">
                     <h1 class="text-5xl font-bold gradient-text">Tangpian</h1>
                 </div>
-                <p class="text-gray-400 mb-8">糖片视频，给生活加点甜</p>
+                <p class="text-gray-600 mb-8">糖片视频，给生活加点甜</p>
             </header>
             
             <!-- 搜索区域：默认居中 -->
@@ -108,11 +106,11 @@
                     <div class="flex">
                         <input type="text" 
                                id="searchInput" 
-                               class="w-full bg-[#111] border border-[#333] text-white px-6 py-4 rounded-l-lg focus:outline-none focus:border-white transition-colors" 
+                               class="w-full bg-white border border-[#ff69b4] text-gray-900 px-6 py-4 rounded-l-lg focus:outline-none focus:border-[#ff8ebf] focus:ring-2 focus:ring-[#ff69b4]/20 transition-colors" 
                                placeholder="搜索你喜欢的视频..."
                                aria-label="视频搜索框">
                         <button onclick="search()" 
-                                class="px-8 py-4 bg-white text-black font-medium rounded-r-lg hover:bg-gray-200 transition-colors"
+                                class="px-8 py-4 bg-[#ff69b4] text-white font-medium rounded-r-lg hover:bg-[#ff8ebf] transition-colors"
                                 aria-label="搜索按钮">
                             搜索
                         </button>
@@ -124,7 +122,7 @@
                     </div>
                     <!-- 添加清除历史按钮 -->
                     <div id="clearHistoryBtn" class="mt-2 text-center">
-                        <button onclick="clearSearchHistory()" class="text-gray-500 text-xs hover:text-white transition-colors" aria-label="清除搜索历史">
+                        <button onclick="clearSearchHistory()" class="text-gray-500 text-xs hover:text-[#ff69b4] transition-colors" aria-label="清除搜索历史">
                             清除搜索历史
                         </button>
                     </div>
@@ -145,9 +143,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
                     <div class="flex items-center justify-center md:justify-start">
-                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
+                        <img src="img/logo.png" alt="Tangpian Logo" class="w-6 h-6 mr-2">
                         <span class="gradient-text font-bold">Tangpian</span>
                     </div>
                     <p class="text-gray-500 text-sm mt-2 text-center md:text-left"> 2025 Tangpian - 糖片视频，给生活加点甜</p>
@@ -168,11 +164,11 @@
     </footer>
 
     <!-- 详情模态框 -->
-    <div id="modal" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center transition-opacity duration-300">
-        <div class="bg-[#111] p-8 rounded-lg w-11/12 max-w-4xl border border-[#333] max-h-[90vh] flex flex-col">
+    <div id="modal" class="fixed inset-0 bg-white/95 hidden flex items-center justify-center transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-lg w-11/12 max-w-4xl border border-[#ff69b4] max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-center mb-6 flex-none">
                 <h2 id="modalTitle" class="text-2xl font-bold gradient-text"></h2>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-2xl transition-colors">&times;</button>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-[#ff69b4] text-2xl transition-colors">&times;</button>
             </div>
             <div id="modalContent" class="overflow-auto flex-1 min-h-0">
                 <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
@@ -187,10 +183,10 @@
     </div>
 
     <!-- 添加 loading 提示框 -->
-    <div id="loading" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-        <div class="bg-[#111] p-8 rounded-lg border border-[#333] flex items-center space-x-4">
-            <div class="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-            <p class="text-white text-lg">加载中...</p>
+    <div id="loading" class="fixed inset-0 bg-white/80 hidden items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg border border-[#ff69b4] flex items-center space-x-4">
+            <div class="w-8 h-8 border-4 border-[#ff69b4] border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-gray-900 text-lg">加载中...</p>
         </div>
     </div>
 

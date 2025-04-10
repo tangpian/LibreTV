@@ -216,16 +216,16 @@ async function search() {
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;');
             const sourceInfo = item.source_name ? 
-                `<span class="bg-[#222] text-xs px-2 py-1 rounded-full">${item.source_name}</span>` : '';
+                `<span class="bg-[#ff69b4] text-xs px-2 py-1 rounded-full text-white">${item.source_name}</span>` : '';
             const sourceCode = item.source_code || currentApiSource;
             
             return `
-                <div class="card-hover bg-[#111] rounded-lg overflow-hidden cursor-pointer p-6 h-fit" 
+                <div class="card-hover bg-white rounded-lg overflow-hidden cursor-pointer p-6 h-fit" 
                      onclick="showDetails('${safeId}','${safeName}','${sourceCode}')">
                     <h3 class="text-xl font-semibold mb-3">${safeName}</h3>
-                    <p class="text-gray-400 text-sm mb-2">${(item.type_name || '').toString().replace(/</g, '&lt;')}</p>
+                    <p class="text-gray-600 text-sm mb-2">${(item.type_name || '').toString().replace(/</g, '&lt;')}</p>
                     <div class="flex justify-between items-center mt-3">
-                        <p class="text-gray-400 text-sm">${(item.vod_remarks || '').toString().replace(/</g, '&lt;')}</p>
+                        <p class="text-gray-600 text-sm">${(item.vod_remarks || '').toString().replace(/</g, '&lt;')}</p>
                         ${sourceInfo}
                     </div>
                 </div>
