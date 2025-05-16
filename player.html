@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LibreTV 播放器</title>
+    <title>糖片TV 播放器</title>
 
     <!-- Favicon -->
     <link rel="icon" href="./image/retrotv_5520.png">
@@ -17,25 +17,6 @@
     <link rel="stylesheet" href="css/player.css">
 </head>
 <body>
-    <header class="bg-[#111] p-4 flex items-center border-b border-[#333] gap-2 player-header">
-        <div class="flex items-center min-w-0">
-            <a href="/" class="flex items-center min-w-0">
-                <svg class="w-8 h-8 mr-2 text-[#00ccff] logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                </svg>
-                <h1 class="text-xl font-bold gradient-text logo-text">LibreTV</h1>
-            </a>
-        </div>
-        <h2 id="videoTitle" class="text-xl font-semibold flex-1 text-center overflow-x-auto whitespace-nowrap truncate custom-title-scroll"></h2>
-        <a href="#" id="goBack" onclick="goBack(event)" class="px-4 py-2 bg-[#222] hover:bg-[#333] border border-[#333] rounded-lg transition-colors flex items-center min-w-0 home-btn">
-            <svg class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5.25 11h15a1.5 1.5 0 1 1 0 3H5.25a1.5 1.5 0 0 1 0-3z"/>
-                <path d="M5.55 12 11.3 17.3a1.5 1.5 0 1 1-2.12 2.12L3 12l6.18-6.18a1.5 1.5 0 1 1 2.12 2.12L5.55 12z"/>
-            </svg>
-            <span class="home-btn-text">上一页</span>
-        </a>
-    </header>
-
     <!-- 密码验证弹窗 -->
     <div id="passwordModal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-[65] transition-opacity duration-300">
         <div class="bg-[#111] p-8 rounded-lg w-11/12 max-w-md border border-[#333] max-h-[90vh] flex flex-col">
@@ -150,42 +131,6 @@
         </svg>
         <span id="shortcutText"></span>
     </div>
-
-    <!-- 页脚区域 -->
-    <footer class="footer mt-2 py-6 border-t border-[#333] bg-[#0a0a0a]">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="flex items-center justify-center md:justify-start">
-                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                        <span class="gradient-text font-bold">LibreTV</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mt-2 text-center md:text-left">© 2025 LibreTV - 自由观影，畅享精彩</p>
-                </div>
-                
-                <div class="text-center md:text-right">
-                    <p class="text-gray-500 text-sm max-w-md">
-                        免责声明：本站仅为视频搜索工具，不存储、上传或分发任何视频内容。
-                        所有视频均来自第三方API接口。如有侵权，请联系相关内容提供方。
-                    </p>
-                    <div class="mt-2 flex justify-center md:justify-end space-x-4">
-                        <a href="about.html" class="text-gray-400 hover:text-white text-sm transition-colors">关于我们</a>
-                        <a href="privacy.html" class="text-gray-400 hover:text-white text-sm transition-colors">隐私政策</a>
-                        <a href="https://www.unicef.org/zh" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">捐赠</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 引入纯 JS sha256（HTTP 下依然可用） -->
-    <script src="libs/sha256.min.js"></script>
-    <script>
-        // 保存原始 js‑sha256 实现，避免被 password.js 覆盖
-        window._jsSha256 = window.sha256;
-    </script>
     
     <script src="libs/hls.min.js" crossorigin="anonymous"></script>
     <script src="libs/DPlayer.min.js" crossorigin="anonymous"></script>
@@ -201,58 +146,55 @@
         
         // 注入服务器端环境变量 (将由服务器端替换)
         // PASSWORD 变量将在这里被服务器端注入
-        window.__ENV__.PASSWORD = "{{PASSWORD}}";        // 改进返回上一页功能
+        window.__ENV__.PASSWORD = "{{PASSWORD}}";
         function goBack(event) {
-            // 防止默认链接行为
             if (event) event.preventDefault();
-            
-            // 1. 优先检查URL参数中的returnUrl
             const urlParams = new URLSearchParams(window.location.search);
             const returnUrl = urlParams.get('returnUrl');
-            
             if (returnUrl) {
-                // 如果URL中有returnUrl参数，优先使用
                 window.location.href = decodeURIComponent(returnUrl);
                 return;
             }
-            
-            // 2. 检查localStorage中保存的lastPageUrl
             const lastPageUrl = localStorage.getItem('lastPageUrl');
             if (lastPageUrl && lastPageUrl !== window.location.href) {
                 window.location.href = lastPageUrl;
                 return;
             }
-            
-            // 3. 检查是否是从搜索页面进入的播放器
             const referrer = document.referrer;
-            
-            // 检查 referrer 是否包含搜索参数
             if (referrer && (referrer.includes('/s=') || referrer.includes('?s='))) {
-                // 如果是从搜索页面来的，返回到搜索页面
                 window.location.href = referrer;
                 return;
             }
-            
-            // 4. 如果是在iframe中打开的，尝试关闭iframe
             if (window.self !== window.top) {
                 try {
-                    // 尝试调用父窗口的关闭播放器函数
                     window.parent.closeVideoPlayer && window.parent.closeVideoPlayer();
                     return;
                 } catch (e) {
                     console.error('调用父窗口closeVideoPlayer失败:', e);
                 }
             }
-            
-            // 5. 无法确定上一页，则返回首页
             if (!referrer || referrer === '') {
                 window.location.href = '/';
                 return;
             }
-            
-            // 6. 以上都不满足，使用默认行为：返回上一页
             window.history.back();
         }
     </script>
+<environment_details>
+# VSCode Visible Files
+player.html
+
+# VSCode Open Tabs
+player.html
+
+# Current Time
+2025/5/16 下午7:30:19 (Asia/Shanghai, UTC+8:00)
+
+# Context Window Usage
+125,360 / 1,048.576K tokens used (12%)
+
+# Current Mode
+ACT MODE
+</environment_details>
 </body>
 </html>

@@ -13,7 +13,7 @@ const PASSWORD_CONFIG = {
 // 网站信息配置
 const SITE_CONFIG = {
     name: 'TangpianTV',
-    url: 'https://tangpian.com/video',
+    url: 'https://video.tangpian.com/',
     description: '免费在线视频搜索与观看平台',
     logo: './image/retrotv_5520.png',
     version: '1.0.3'
